@@ -6,20 +6,19 @@ jobs:
     steps:
     - name: Checkout code
       uses: actions/checkout@v4
-      
+
     - name: Set up JDK 17
       uses: actions/setup-java@v4
       with:
         java-version: '17'
         distribution: 'temurin'
-        
-    - name: Grant execute permission for gradlew
-      run: chmod +x gradlew
-      continue-on-error: true
+
+    - name: Generate Gradle Wrapper
+      run: gradle wrapper --gradle-version 8.2
 
     - name: Build with Gradle
-      run: gradle assembleDebug
-      
+      run: ./gradlew assembleDebug
+
     - name: Upload APK
       uses: actions/upload-artifact@v4
       with:
