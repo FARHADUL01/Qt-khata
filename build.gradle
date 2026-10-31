@@ -1,15 +1,35 @@
- buildscript {
-    repositories {
-        google()
-        mavenCentral()
+plugins {
+    id 'com.android.application'
+}
+android {
+    namespace 'com.qtkhata.app'
+    compileSdk 34
+    defaultConfig {
+        applicationId "com.qtkhata.app"
+        minSdk 24
+        targetSdk 34
+        versionCode 1
+        versionName "1.0"
     }
-    dependencies {
-        classpath 'com.android.tools.build:gradle:8.1.0'
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
     }
 }
-allprojects {
-    repositories {
-        google()
-        mavenCentral()
+
+// এই অংশটি কোডলিন ভার্সনের সমস্যা সমাধান করবে
+configurations.all {
+    resolutionStrategy {
+        force 'org.jetbrains.kotlin:kotlin-stdlib:1.8.22'
+        force 'org.jetbrains.kotlin:kotlin-stdlib-jdk8:1.8.22'
+        force 'org.jetbrains.kotlin:kotlin-stdlib-jdk7:1.8.22'
     }
+}
+
+dependencies {
+    implementation 'androidx.appcompat:appcompat:1.6.1'
+    implementation 'androidx.biometric:biometric:1.1.0'
+    implementation 'androidx.core:core:1.12.0'
 }
