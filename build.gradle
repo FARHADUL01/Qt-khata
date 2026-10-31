@@ -1,6 +1,5 @@
-plugins {
-    id 'com.android.application'
-}
+apply plugin: 'com.android.application'
+
 android {
     namespace 'com.qtkhata.app'
     compileSdk 34
@@ -19,7 +18,6 @@ android {
     }
 }
 
-// এই অংশটি কোডলিন ভার্সনের সমস্যা সমাধান করবে
 configurations.all {
     resolutionStrategy {
         force 'org.jetbrains.kotlin:kotlin-stdlib:1.8.22'
